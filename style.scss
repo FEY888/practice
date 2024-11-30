@@ -1,0 +1,109 @@
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html > body {
+  font-family: 'GmarketSansMedium';
+  text-underline-position: under;
+}
+
+$site-width: 1080px;
+// 라이브러리
+.con-min-width {
+  min-width: $site-width;
+}
+
+.con {
+  width: $site-width;
+}
+
+// 커스텀
+.top-bar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.top-bar__menu-1 {
+  margin-left: auto;
+
+  // 1차메뉴
+  .depth1 {
+    li:hover > a {
+      text-decoration: underline;
+    }
+
+    > li {
+      padding: 0 25px;
+
+      &:hover {
+        > a {
+          &::after {
+            display: block;
+          }
+        }
+
+        .mega-menu {
+          display: block;
+        }
+      }
+
+      > a {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        position: relative;
+        padding: 0 10px;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 2px;
+          background-color: black;
+          display: none;
+        }
+      }
+    }
+  }
+
+  @mixin depth-text($text-color: black, $font-size: 1rem) {
+    display: block;
+    text-align: center;
+    color: $text-color;
+    font-size: $font-size;
+  }
+
+  // 2차메뉴
+  .depth2 {
+    margin: 70px 0;
+
+    > li {
+      > a {
+        @include depth-text($font-size: 17px);
+        margin-bottom: 10px;
+      }
+    }
+  }
+  // 3차메뉴
+  .depth3 {
+    > li {
+      > a {
+        @include depth-text(#444, 13px);
+        padding: 12px 0;
+      }
+    }
+  }
+  .mega-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    min-height: 400px;
+    box-shadow: 0 12px 14px rgba(0, 0, 0, 0.12);
+  }
+}
