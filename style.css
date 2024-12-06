@@ -1,12 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url(https://www.kakaobank.com/static/images/web/logo_black.svg);
 @font-face {
-  font-family: "GmarketSansMedium";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff") format("woff");
+  font-family: 'GmarketSansMedium';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
 html > body {
-  font-family: "GmarketSansMedium";
   text-underline-position: under;
+  font-family: 'GmarketSansMedium';
 }
 
 .con-min-width {
@@ -20,15 +26,65 @@ html > body {
 .top-bar {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+.top-bar .logo {
+  background-image: url(https://www.kakaobank.com/static/images/web/logo_black.svg);
+  background-repeat: no-repeat;
+  background-size: 116px 20px;
+  background-position: center;
+}
 
 .top-bar__menu-1 {
   margin-left: auto;
+}
+.top-bar__menu-1 .icon-on::after {
+  content: '';
+  display: inline-block;
+  background-image: url(https://www.kakaobank.com/static/images/web/svg_line_outlink.svg);
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  transform: translate(3px, -2px);
+}
+.top-bar__menu-1 .icon-on.ver2::after {
+  background-size: 20px 20px;
+  transform: translate(3px, 5px);
 }
 .top-bar__menu-1 .depth1 li:hover > a {
   text-decoration: underline;
 }
 .top-bar__menu-1 .depth1 > li {
   padding: 0 25px;
+}
+.top-bar__menu-1
+  .depth1
+  > li:first-child
+  .depth2
+  > li:first-child
+  .depth3
+  > li:nth-last-child(2)
+  a::after,
+.top-bar__menu-1
+  .depth1
+  > li:first-child
+  .depth2
+  > li:first-child
+  .depth3
+  li:last-child
+  a::after {
+  content: '';
+  display: inline-block;
+  background-image: url(https://www.kakaobank.com/static/images/web/svg_line_outlink.svg);
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  transform: translate(3px, -2px);
+}
+.top-bar__menu-1 .depth1 > li:hover > a {
+  text-decoration: underline;
 }
 .top-bar__menu-1 .depth1 > li:hover > a::after {
   display: block;
@@ -44,7 +100,7 @@ html > body {
   padding: 0 10px;
 }
 .top-bar__menu-1 .depth1 > li > a::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: 0;
@@ -59,16 +115,19 @@ html > body {
 .top-bar__menu-1 .depth2 > li > a {
   display: block;
   text-align: center;
-  color: black;
   font-size: 17px;
+  color: black;
   margin-bottom: 10px;
 }
 .top-bar__menu-1 .depth3 > li > a {
   display: block;
   text-align: center;
-  color: #444;
   font-size: 13px;
+  color: #444;
   padding: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .top-bar__menu-1 .mega-menu {
   display: none;
@@ -77,4 +136,72 @@ html > body {
   width: 100%;
   min-height: 400px;
   box-shadow: 0 12px 14px rgba(0, 0, 0, 0.12);
+}
+
+.drop-down-box {
+  position: relative;
+}
+.drop-down-box .drop-down-btn {
+  background-color: rgba(244, 244, 244, 0.8);
+  color: rgb(68, 68, 68);
+  border: 1px solid rgba(229, 229, 229, 0.8);
+  border-radius: 40px;
+  width: 138px;
+  height: 40px;
+  padding-top: 7px;
+}
+.drop-down-box .drop-down-btn.active + .drop-down-menu {
+  display: block;
+}
+.drop-down-box .drop-down-btn:hover::after {
+  transform: rotate(-180deg);
+}
+.drop-down-box .drop-down-btn::after {
+  content: '';
+  display: inline-block;
+  background-image: url(https://www.kakaobank.com/static/images/web/svg_line_arrow_down.svg);
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+  width: 15px;
+  height: 15px;
+  margin-left: 10px;
+  transition: transform 0.3s;
+  transform: rotate(0) translateY(4px);
+}
+.drop-down-box .drop-down-menu {
+  position: absolute;
+  width: 240px;
+  left: 50%;
+  top: 115%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background-color: #fff;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+}
+.drop-down-box .drop-down-menu.active {
+  display: block;
+}
+.drop-down-box .drop-down-menu li:hover > a {
+  background-color: rgba(244, 244, 244, 0.8);
+  text-decoration: underline;
+}
+.drop-down-box .drop-down-menu li a {
+  display: flex;
+  align-items: center;
+  padding: 10px 24px;
+  font-size: 13px;
+}
+.drop-down-box .drop-down-menu li a::after {
+  content: '';
+  display: inline-block;
+  background-image: url(https://www.kakaobank.com/static/images/web/svg_line_outlink.svg);
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  transform: translate(3px, -2px);
+  margin-left: 3px;
+  transform: translateY(-1px);
 }
